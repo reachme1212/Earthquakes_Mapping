@@ -1,0 +1,21 @@
+
+How to generate SSH Key Public
+Open Git Bash.
+
+Paste the text below, substituting in your GitHub email address.
+
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+
+> Enter a file in which to save the key (/c/Users/you/.ssh/id_algorithm):[Press enter]
+At the prompt, type a secure passphrase. For more information, see "Working with SSH key passphrases."
+
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCvAM9291WwCQA8vSE4gU2SFQhGOw87dMVO+M76jQWgTHpChug9PPeMTWZ5OyjIpTQap+iFwiuFR8bsdJ44R2mWnOmrIQBQEU1Muv48tyHmjJxybPGkyEkcRJ37LAXUy6YFPoXPHRLkPvBQWdyprl4JU+7MpI2YawmRzGw3YpeI2IRzk5cWGXUh6GsF/D7wpxEDgFiCg8K86uuXbudbKSf1JsV08TxYWL9ZhPq/EHzpCy5ZIU/ABB3ooEwmlN2Y/Mvn6KkczzqscVsJbCoedmwkKPJhJHrRC+6MnsXecsajsk3LJGjnijIhPMyuk0LCtr19GWT/o4DWmAufhPxY11cy4mVUK7LBEsKbWLKTxZHZzWuKctd9iS1Z0JUXHiWUwmm9jILVdHGKl7RbnV3NO2ARIelYM0pGyE5fVVMTq8upG4XnRR7xxeah+dlP4Xhj9DOWAtZ2Lj21MPLHLH35N3ljSbbdJp3E6EyaPA8UWCbBrdpYb7rXErXsyX/qDY0cjJwsYm01Cz5mMOe0Ci836MqyAKFOXMTcJG2wtRsE1luYHXKNXd0XGykC2mOuStqL6VSjMsj2Pb14+UrpXU9qo9gO6xfqiGk9Ctns59D5jRXDHNAcgbKBoX3oUjHwk6GUWxKpucmtEwaEB9xXhYSmUepdUEkXGtultccf58LxhLkmXQ== reachme1212@gmail.com
