@@ -4,22 +4,6 @@ console.log("working");
 // Accessing the airport GeoJSON URL
 let earthQuakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
-
-
-d3.json(earthQuakes).then(function(data) {
-    console.log(data);
-    // Creating a GeoJSON layer with the retrieved data.
-    L.geoJSON(data, {
-
-        onEachFeature: function(feature, layer) {
-            console.log(feature);
-            layer.bindPopup("<h3> Earthquake Magnitude: " +
-                feature.properties.mag + "</h3> <hr> <h3> Place :" + feature.properties.place + "</h3>  ");
-        }
-
-    }).addTo(map);
-});
-
 // We create the tile layer that will be the background of our map.
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -41,20 +25,20 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/
     accessToken: API_KEY
 });
 
-// Create a base layer that holds both maps.
-let baseMaps = {
-    "Streets": streets,
-    "Satellite": satelliteStreets
-};
+d3.json(earthQuakes).then(function(data) {
+            console.log(data);
+            // Creating a GeoJSON layer with the retrieved data.
+            L.geoJSON(data).addTo(map);
 
-let map = L.map("mapid", {
-    center: [39.5, -98.5],
+            // Create a base layer that holds both maps.
+            let baseMaps = {
+                "Streets": streets,
+                "Satellite": satelliteStreets
+            };
 
-    fillOpacity: 0.50,
-    color: "yellow",
-    weight: 2,
-    zoom: 3,
-    layers: [streets]
-});
-// Then we add our 'graymap' tile layer to the map.
-L.control.layers(baseMaps).addTo(map);
+            let map = L.map("mapid", {
+                center: [39.5, -98.5],
+                layers: [streets]
+            });
+            // Then we add our 'graymap' tile layer to the map.
+            L.control.layers(baseMaps).addTo(map);
