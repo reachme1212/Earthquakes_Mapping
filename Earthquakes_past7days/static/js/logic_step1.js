@@ -2,19 +2,19 @@
 console.log("working");
 
 // Accessing the airport GeoJSON URL
-let torontoHoods = "https://raw.githubusercontent.com/reachme1212/Earthquakes_Mapping/Mapping_GeoJSON_Polygons/Mapping_GeoJSON_Polygons/static/js/torontoNeighborhoods.json";
+let earthQuakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 
 
-d3.json(torontoHoods).then(function(data) {
+d3.json(earthQuakes).then(function(data) {
     console.log(data);
     // Creating a GeoJSON layer with the retrieved data.
     L.geoJSON(data, {
 
         onEachFeature: function(feature, layer) {
             console.log(feature);
-            layer.bindPopup("<h3> Area Code: " +
-                feature.properties.AREA_S_CD + "</h3> <hr> <h3> Area Name :" + feature.properties.AREA_NAME + "</h3>  ");
+            layer.bindPopup("<h3> Earthquake Magnitude: " +
+                feature.properties.mag + "</h3> <hr> <h3> Place :" + feature.properties.place + "</h3>  ");
         }
 
     }).addTo(map);
@@ -44,17 +44,17 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/
 // Create a base layer that holds both maps.
 let baseMaps = {
     "Streets": streets,
-    "Satellite Streets": satelliteStreets
+    "Satellite": satelliteStreets
 };
 
 let map = L.map("mapid", {
-    center: [43.7, -79.3],
+    center: [39.5, -98.5],
 
     fillOpacity: 0.50,
     color: "yellow",
     weight: 2,
-    zoom: 11,
-    layers: [satelliteStreets]
+    zoom: 3,
+    layers: [streets]
 });
 // Then we add our 'graymap' tile layer to the map.
 L.control.layers(baseMaps).addTo(map);
