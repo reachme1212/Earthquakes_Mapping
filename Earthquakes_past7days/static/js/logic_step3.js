@@ -1,8 +1,7 @@
 // Add console.log to check to see if our code is working.
 console.log("working");
 
-let earthQuakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
-
+//let earthQuakes = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 
 // We create the tile layer that will be the background of our map.
@@ -25,6 +24,7 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/
     accessToken: API_KEY
 });
 
+//group layers
 let earthquakes = new L.layerGroup();
 let overlays = {
     Earthquakes: earthquakes
@@ -44,7 +44,10 @@ let map = L.map("mapid", {
 // This function determines the radius of the earthquake marker based on its magnitude.
 // Earthquakes with a magnitude of 0 will be plotted with a radius of 1.
 
-d3.json(earthQuakes).then(function(data) {
+// Then we add our 'graymap' tile layer to the map.
+L.control.layers(baseMaps, overlays).addTo(map);
+
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson").then(function(data) {
     console.log(data);
 
     //styleInfo decides all styling information for the marker//getColor decides marker color// getRadius decides marker size
@@ -102,7 +105,32 @@ d3.json(earthQuakes).then(function(data) {
         }
     }).addTo(earthquakes);
     earthquakes.addTo(map);
-});
 
-// Then we add our 'graymap' tile layer to the map.
-L.control.layers(baseMaps, overlays).addTo(map);
+    //add legend 
+    let legend = L.control({
+        position: "bottomright"
+    });
+
+    legend.onAdd = function() {
+        let div = L.DomUtil.create("div", "info legend");
+
+        const magnitudes = [0, 1, 2, 3, 4, 5];
+        const colors = [
+            "#98ee00",
+            "#d4ee00",
+            "#eecc00",
+            "#ee9c00",
+            "#ea822c",
+            "#ea2c2c"
+        ];
+        // Looping through our intervals to generate a label with a colored square for each interval.
+        for (var i = 0; i < magnitudes.length; i++) {
+            console.log(colors[i]);
+            div.innerHTML +=
+                "<i style='background: " + colors[i] + "'></i> " +
+                magnitudes[i] + (magnitudes[i + 1] ? "&ndash;" + magnitudes[i + 1] + "<br>" : "+");
+        }
+        return div;
+    };
+    legend.addTo(map);
+});
