@@ -3,7 +3,15 @@
 
 **Overview of Project:**
 
-In this project I have collected the earthquakes data recorded for the past week from the USGS using API, I have used JavaScript leaflet library to plotted the earthquakes using the coordinates. I have created 3 layers in the map, Layer 1(All Earthquakes) shows all earthquakes big and small, Layer 2(Tectonic Plates) shows the tectonic plates because earthquakes occur along fault lines, cracks in Earth's crust where tectonic plates meet. They occur where plates are subducting, spreading, slipping, or colliding. Layer 3 (Major Earthquakes) shows earth quakes above 4.5 magnitude, Events with magnitudes greater than 4.5 are strong enough to be recorded by a seismograph anywhere in the world and considered as a serious earthquake.
+In this project I have collected the earthquakes data recorded for the past week from the USGS using an API key, I have used JavaScript leaflet library to plot the earthquakes using the coordinates of the location. I have created 3 layers in the map.
+
+Layer 1(All Earthquakes) this layer shows earthquakes of all magnitude mild to severe earthquakes.
+
+Layer 2(Tectonic Plates) I have added a layer that shows tectonic plates because earthquakes occur along fault lines, cracks in Earth's crust where tectonic plates meet. They occur where plates are subducting, spreading, slipping, or colliding, this layer shows all the tectonic plates in the map. 
+
+Layer 3 (Major Earthquakes) Events with magnitudes greater than 4.5 are strong enough to be recorded by a seismograph anywhere in the world and considered as a serious earthquake, this layer shows all earthquakes over magnitude.
+
+The marker color and size show the severity of the earthquake, Earthquakes with magnitude 4.5 and over are marked red and bigger than other markers. 
 
 **Results:**
 
@@ -17,6 +25,6 @@ In this project I have used JavaScript – Leaflet in combination with d3json to
 
 ![pic](images/tectonic.PNG)
 
- [Interactive Map:]()
+![Interactive Map:]()
 
 
