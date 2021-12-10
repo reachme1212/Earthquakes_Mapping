@@ -178,7 +178,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
         const magnitudes = [0, 1, 2, 3, 4, 5];
         const colors = [
             "lightslategray",
-            "#pink",
+            "pink",
             "lightskyblue",
             "yellow",
             "orange",
