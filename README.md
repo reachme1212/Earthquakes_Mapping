@@ -25,6 +25,6 @@ In this project I have used JavaScript – Leaflet in combination with d3json to
 
 ![pic](images/tectonic.PNG)
 
-![Interactive Map:]()
+
 
 
